@@ -3,14 +3,14 @@ expect.extend({ toBeDateString });
 
 const calculateDueDate = require('./duedatecalculator');
 
-describe('submit date type check', () => {
-    it('should throw an error if format of submit date is not date', () => {
+describe('submitDate type check', () => {
+    it('should throw an error if type of submitDate is not date', () => {
       const submitDate = 33;
       const turnaroundTime = 8;
       const t = () => {
         calculateDueDate(submitDate, turnaroundTime);
       };
-      expect(t).toThrow('Format of submit date must be a date!');
+      expect(t).toThrow('Type of submit date must be a date!');
     });
 });
 describe('return type check', () => {

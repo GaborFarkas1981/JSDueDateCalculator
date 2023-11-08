@@ -1,6 +1,6 @@
 function calculateDueDate(submitDate, turnaroundTime) {
     if (!(isValidDate(submitDate))) {
-        throw ('Format of submit date must be a date!')
+        throw ('Type of submit date must be a date!')
     }
     const dueDate = new Date('2023-11-10T08:00:00');
 

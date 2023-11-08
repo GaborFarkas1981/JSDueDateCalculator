@@ -16,7 +16,7 @@ describe('submitDate type check', () => {
 describe('turnaroundTime type check', () => {
     it('should throw an error if type of turnaroundTime is not a number', () => {
       const submitDate = new Date('2023-11-08T10:11:12');
-      const turnaroundTime = 8.8;
+      const turnaroundTime = 'test';
       const t = () => {
         calculateDueDate(submitDate, turnaroundTime);
       };

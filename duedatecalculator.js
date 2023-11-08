@@ -1,5 +1,4 @@
-function calculateDueDate(numberOne, numberTwo) {
-    return numberOne + numberTwo
-}
+function calculateDueDate(submitDate, turnaroundTime) {
 
+}
 module.exports = calculateDueDate;

@@ -10,7 +10,7 @@ describe('type check', () => {
       const t = () => {
         calculateDueDate(submitDate, turnaroundTime);
       };
-      expect(t).toThrow('Type of submit date must be a date!');
+      expect(t).toThrow('Type of submitDate must be a date!');
     });
     it('should throw an error if type of turnaroundTime is not a number', () => {
       const submitDate = new Date('2023-11-08T10:11:12');
@@ -25,5 +25,15 @@ describe('type check', () => {
         const turnaroundTime = 8;
         const result = calculateDueDate(submitDate, turnaroundTime);
         expect(result).toBeDateString();
+    });
+});
+describe('valid date submitted', () => {
+    it('should throw an error if submitDate is not in working hours', () => {
+      const submitDate = new Date('2023-11-07T10:11:12');
+      const turnaroundTime = 8;
+      const t = () => {
+        calculateDueDate(submitDate, turnaroundTime);
+      };
+      expect(t).toThrow('Submit date must be in working hours!');
     });
 });

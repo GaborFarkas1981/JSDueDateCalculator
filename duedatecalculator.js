@@ -11,7 +11,7 @@ function isValidDate(input) {
 
 function inputValidator(submitDate, turnaroundTime) {
     if (!(isValidDate(submitDate))) {
-        throw ('Type of submit date must be a date!')
+        throw ('Type of submitDate must be a date!')
     }
     if (!Number.isInteger(turnaroundTime)) {
         throw ('Type of turnaroundTime must be an integer!')

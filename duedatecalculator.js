@@ -4,7 +4,7 @@ function calculateDueDate(submitDate, turnaroundTime) {
     const dstOffset = getLocalDSTOffset(); // considering DST offset
     submitDate = new Date(submitDate.getTime() + dstOffset * 60000);
 
-    inputChecker(submitDate, turnaroundTime);
+    validateInput(submitDate, turnaroundTime);
 
     const dueDate = new Date(submitDate);
 
@@ -51,7 +51,7 @@ function isValidDate(input) {
     }
 }
 
-function inputChecker(submitDate, turnaroundTime) {
+function validateInput(submitDate, turnaroundTime) {
     if (!isWorkingHour(submitDate)) {
         throw new Error('Submit date must be in working hours!')
     }
@@ -59,4 +59,11 @@ function inputChecker(submitDate, turnaroundTime) {
         throw new Error('Type of turnaroundTime must be a positive integer!')
     }
 }
-module.exports = calculateDueDate;
+module.exports = {
+  calculateDueDate,
+  isWorkingDay,
+  isWorkingHour,
+  getLocalDSTOffset,
+  isValidDate,
+  validateInput,
+};

@@ -10,6 +10,11 @@ const {
   validateInput,
 } = require('./duedatecalculator'); // Import functions from the main code
 
+// Constants for repeating texts
+const INVALID_DATE_ERROR = 'Invalid submitDate: It must be a valid Date object.';
+const WORKING_HOUR_ERROR = 'Submit date must be in working hours!';
+const INVALID_TURNAROUND_ERROR = 'Type of turnaroundTime must be a positive integer!';
+
 describe('calculateDueDate', () => {
     it('should return dueDate in date format', () => {
         const submitDate = new Date('2023-11-08T10:11:12');
@@ -91,41 +96,26 @@ describe('validateInput', () => {
     it('should throw an error if type of submitDate is not a date object', () => {
         const submitDate = 33;
         const turnaroundTime = 8;
-        const t = () => {
-        calculateDueDate(submitDate, turnaroundTime);
-        };
-        expect(t).toThrow('Invalid submitDate: It must be a valid Date object.');
+        expect(() => calculateDueDate(submitDate, turnaroundTime)).toThrowError(INVALID_DATE_ERROR);
     });
     it('should throw an error if submitDate is not in working hours', () => {
         const submitDate = new Date('2023-11-03T16:11:12');
         const turnaroundTime = 8;
-        const t = () => {
-          calculateDueDate(submitDate, turnaroundTime);
-        };
-        expect(t).toThrow('Submit date must be in working hours!');
+        expect(() => calculateDueDate(submitDate, turnaroundTime)).toThrowError(WORKING_HOUR_ERROR);
     });
     it('should throw an error if type of turnaroundTime is not a number', () => {
         const submitDate = new Date('2023-11-08T10:11:12');
         const turnaroundTime = 'test';
-        const t = () => {
-          calculateDueDate(submitDate, turnaroundTime);
-        };
-        expect(t).toThrow('Type of turnaroundTime must be a positive integer!');
+        expect(() => calculateDueDate(submitDate, turnaroundTime)).toThrowError(INVALID_TURNAROUND_ERROR);
     });
     it('should throw an error if type of turnaroundTime is not an integer', () => {
         const submitDate = new Date('2023-11-08T10:11:12');
         const turnaroundTime = 2.2;
-        const t = () => {
-          calculateDueDate(submitDate, turnaroundTime);
-        };
-        expect(t).toThrow('Type of turnaroundTime must be a positive integer!');
+        expect(() => calculateDueDate(submitDate, turnaroundTime)).toThrowError(INVALID_TURNAROUND_ERROR);
     });
     it('should throw an error if type of turnaroundTime is not a positive integer', () => {
         const submitDate = new Date('2023-11-08T10:11:12');
         const turnaroundTime = -2;
-        const t = () => {
-          calculateDueDate(submitDate, turnaroundTime);
-        };
-        expect(t).toThrow('Type of turnaroundTime must be a positive integer!');
+        expect(() => calculateDueDate(submitDate, turnaroundTime)).toThrowError(INVALID_TURNAROUND_ERROR);
     });
 });

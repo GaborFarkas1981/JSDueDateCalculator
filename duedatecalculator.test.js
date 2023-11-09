@@ -49,7 +49,19 @@ describe('isValidDate', () => {
         expect(result).toBe(false);
     });
 });
+describe('isWorkingDay', () => {
+    it('should return true for a weekday', () => {
+        const submitDate = new Date('2023-11-08T10:00:00');
+        const result = isWorkingDay(submitDate);
+        expect(result).toBe(true);
+    });
 
+    it('should return false for a weekend day', () => {
+        const submitDate = new Date('2023-11-11T10:00:00');
+        const result = isWorkingDay(submitDate);
+        expect(result).toBe(false);
+    });
+});
 describe('validateInput', () => {
     it('should pass if turnaroundTime is a positive integer', () => {
         const submitDate = new Date('2023-11-08T10:11:12');

@@ -27,7 +27,7 @@ describe('type check', () => {
         expect(result).toBeDateString();
     });
 });
-describe('valid date submitted', () => {
+describe('validity check', () => {
     it('should throw an error if submitDate is not in working hours', () => {
       const submitDate = new Date('2023-11-03T16:11:12');
       const turnaroundTime = 8;
@@ -36,4 +36,12 @@ describe('valid date submitted', () => {
       };
       expect(t).toThrow('Submit date must be in working hours!');
     });
+});
+describe('returning due date check', () => {
+    it('should return dueDate on the next working day', () => {
+        const submitDate = new Date('2023-11-03T15:48:13'); // Friday
+        const turnaroundTime = 8; // 8 working hours
+        const dueDate = calculateDueDate(submitDate, turnaroundTime);
+        expect(dueDate.toISOString()).toBe('2023-11-13T15:48:13.000Z'); // Monday
+      });
 });

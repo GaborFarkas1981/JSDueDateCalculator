@@ -1,5 +1,7 @@
 function calculateDueDate(submitDate, turnaroundTime) {
-    isValidDate(submitDate)
+    if (!isValidDate(submitDate)) {
+        throw new Error('Invalid submitDate: It must be a valid Date object.');
+    }
 
     const dstOffset = getLocalDSTOffset(); // considering DST offset
     submitDate = new Date(submitDate.getTime() + dstOffset * 60000);
@@ -46,9 +48,7 @@ function getLocalDSTOffset() {
 }
 
 function isValidDate(input) {
-    if (!(input instanceof Date && !isNaN(input))) {
-        throw new Error('Invalid submitDate: It must be a valid Date object.')
-    }
+    return (input instanceof Date && !isNaN(input))
 }
 
 function validateInput(submitDate, turnaroundTime) {

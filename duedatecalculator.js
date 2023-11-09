@@ -41,9 +41,9 @@ function getLocalDSTOffset() {
 
     // If the standard time offset is greater than the DST time offset, DST is in effect
     if (standardTimeOffset > dstTimeOffset) {
-    return standardTimeOffset - dstTimeOffset;
+        return standardTimeOffset - dstTimeOffset;
     } else {
-    return 0; // DST is not in effect
+        return 0; // DST is not in effect
     }
 }
 

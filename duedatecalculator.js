@@ -1,7 +1,10 @@
 function calculateDueDate(submitDate, turnaroundTime) {
+    if (!(isValidDate(submitDate))) {
+        throw ('Type of submitDate must be a date!')
+    }
     const dstOffset = getLocalDSTOffset(); // considering DST offset
     submitDate = new Date(submitDate.getTime() + dstOffset * 60000);
-    inputValidator(submitDate, turnaroundTime);
+    inputChecker(submitDate, turnaroundTime);
     const dueDate = new Date('2023-11-10T08:00:00');
 
     return dueDate;
@@ -11,10 +14,7 @@ function isValidDate(input) {
     return (input instanceof Date && !isNaN(input))
 }
 
-function inputValidator(submitDate, turnaroundTime) {
-    if (!(isValidDate(submitDate))) {
-        throw ('Type of submitDate must be a date!')
-    }
+function inputChecker(submitDate, turnaroundTime) {
     if (!isWorkingHour(submitDate)) {
         throw ('Submit date must be in working hours!')
     }

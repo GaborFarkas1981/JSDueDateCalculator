@@ -5,7 +5,14 @@ function calculateDueDate(submitDate, turnaroundTime) {
     const dstOffset = getLocalDSTOffset(); // considering DST offset
     submitDate = new Date(submitDate.getTime() + dstOffset * 60000);
     inputChecker(submitDate, turnaroundTime);
-    const dueDate = new Date('2023-11-10T08:00:00');
+    const dueDate = new Date(submitDate);
+    while (turnaroundTime > 0 || !isWorkingHour(dueDate)) {
+        dueDate.setTime(dueDate.getTime() + (60*60*1000)); // add 1 hour
+        if (isWorkingHour(dueDate)) {
+            turnaroundTime--;
+        }
+    }
+
 
     return dueDate;
 }

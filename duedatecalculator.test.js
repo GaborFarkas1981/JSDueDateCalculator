@@ -23,17 +23,30 @@ describe('calculateDueDate', () => {
         const dueDate = calculateDueDate(submitDate, turnaroundTime);
         expect(dueDate.toISOString()).toBe('2023-11-06T15:48:13.000Z'); // Monday
     });
-        it('should handle a very long turnaround time', () => {
+    it('should handle a very long turnaround time', () => {
         const submitDate = new Date('2023-11-08T10:00:00');
         const turnaroundTime = 48; // 48 working hours (6 days)
         const dueDate = calculateDueDate(submitDate, turnaroundTime);
         expect(dueDate.toISOString()).toBe('2023-11-16T10:00:00.000Z');
     });
-        it('should calculate due date within the same working day', () => {
+    it('should calculate due date within the same working day', () => {
         const submitDate = new Date('2023-11-08T10:00:00');
         const turnaroundTime = 4; // 4 working hours
         const dueDate = calculateDueDate(submitDate, turnaroundTime);
         expect(dueDate.toISOString()).toBe('2023-11-08T14:00:00.000Z');
+    });
+});
+
+describe('isValidDate', () => {
+    it('should return true for a valid Date object', () => {
+        const submitDate = new Date('2023-11-08T10:00:00');
+        const result = isValidDate(submitDate);
+        expect(result).toBe(true);
+    });
+    it('should return false for an invalid Date object', () => {
+        const submitDate = new Date('notDate');
+        const result = isValidDate(submitDate);
+        expect(result).toBe(false);
     });
 });
 

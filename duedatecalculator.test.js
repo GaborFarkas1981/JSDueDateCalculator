@@ -10,7 +10,7 @@ describe('input check', () => {
       const t = () => {
         calculateDueDate(submitDate, turnaroundTime);
       };
-      expect(t).toThrow('Type of submitDate must be a date!');
+      expect(t).toThrow('Invalid submitDate: It must be a valid Date object.');
     });
     it('should throw an error if submitDate is not in working hours', () => {
           const submitDate = new Date('2023-11-03T16:11:12');

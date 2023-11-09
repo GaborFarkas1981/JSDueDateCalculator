@@ -47,16 +47,16 @@ function getLocalDSTOffset() {
 
 function isValidDate(input) {
     if (!(input instanceof Date && !isNaN(input))) {
-        throw ('Type of submitDate must be a date!')
+        throw new Error('Invalid submitDate: It must be a valid Date object.')
     }
 }
 
 function inputChecker(submitDate, turnaroundTime) {
     if (!isWorkingHour(submitDate)) {
-        throw ('Submit date must be in working hours!')
+        throw new Error('Submit date must be in working hours!')
     }
     if (!Number.isInteger(turnaroundTime) || turnaroundTime < 1) {
-        throw ('Type of turnaroundTime must be a positive integer!')
+        throw new Error('Type of turnaroundTime must be a positive integer!')
     }
 }
 module.exports = calculateDueDate;

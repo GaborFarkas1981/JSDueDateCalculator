@@ -55,7 +55,7 @@ function inputChecker(submitDate, turnaroundTime) {
     if (!isWorkingHour(submitDate)) {
         throw ('Submit date must be in working hours!')
     }
-    if (!Number.isInteger(turnaroundTime)) {
+    if (!Number.isInteger(turnaroundTime) || turnaroundTime < 1) {
         throw ('Type of turnaroundTime must be a positive integer!')
     }
 }

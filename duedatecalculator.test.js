@@ -62,6 +62,19 @@ describe('isWorkingDay', () => {
         expect(result).toBe(false);
     });
 });
+describe('isWorkingHour', () => {
+    it('should return true for a time within working hours', () => {
+        const submitDate = new Date('2023-11-09T10:00:00');
+        const result = isWorkingHour(submitDate);
+        expect(result).toBe(true);
+    });
+
+    it('should return false for a time outside working hours', () => {
+        const submitDate = new Date('2023-11-09T3:00:00');
+        const result = isWorkingHour(submitDate);
+        expect(result).toBe(false);
+    });
+});
 describe('validateInput', () => {
     it('should pass if turnaroundTime is a positive integer', () => {
         const submitDate = new Date('2023-11-08T10:11:12');

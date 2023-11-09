@@ -42,6 +42,6 @@ describe('returning due date check', () => {
         const submitDate = new Date('2023-11-03T15:48:13'); // Friday
         const turnaroundTime = 8; // 8 working hours
         const dueDate = calculateDueDate(submitDate, turnaroundTime);
-        expect(dueDate.toISOString()).toBe('2023-11-13T15:48:13.000Z'); // Monday
+        expect(dueDate.toISOString()).toBe('2023-11-06T15:48:13.000Z'); // Monday
       });
 });

@@ -56,7 +56,7 @@ function inputChecker(submitDate, turnaroundTime) {
         throw ('Submit date must be in working hours!')
     }
     if (!Number.isInteger(turnaroundTime)) {
-        throw ('Type of turnaroundTime must be an integer!')
+        throw ('Type of turnaroundTime must be a positive integer!')
     }
 }
 module.exports = calculateDueDate;
